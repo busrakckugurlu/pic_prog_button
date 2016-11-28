@@ -1,0 +1,14 @@
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            clsGroupDetail gd = new clsGroupDetail();
+           gd.groupRef = Convert.ToInt32(Request.QueryString["groupRef"]);
+            
+
+            GroupRef1 = gd.groupRef;
+          // Session.Add("GroupRef1", Convert.ToInt32(Request.QueryString["groupRef"]));
+
+            ASPxListBox1.DataSource = gd.getGroupMembersNotInSession(Convert.ToInt32(Session["userId"].ToString()));
+            ASPxListBox1.DataBind();
+
+           
+            string selectedValue = string.Empty;
