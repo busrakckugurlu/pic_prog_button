@@ -1,0 +1,61 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015-016 CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+021     btn_oku.tus
+021     @delay_ms1.P1
+021     MAIN.@SCRATCH1
+022     @PRINTF_D_2400_50_49.P1
+023     @PRINTF_D_2400_50_49.P1
+024     @PRINTF_D_2400_50_49.@SCRATCH1
+025     @PRINTF_D_2400_50_49.@SCRATCH2
+026     @PRINTF_D_2400_50_49.@SCRATCH3
+027     @PRINTF_D_2400_50_49.@SCRATCH4
+028     @DIV88.P1
+029     @DIV88.P1
+02A     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07B     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+009A  @delay_ms1
+0004  btn_oku
+00AF  MAIN
+001C  @DIV88
+0031  @PRINTF_D_2400_50_49
+00AF  @cinit
+
+Project Directory:
+    C:\Users\Büþra1\Desktop\buton_dene\
+
+Project Files:
+    buton_dene.c
+    ..\..\..\..\Program Files (x86)\PICC\devices\16f628A.h
+
+Units:
+    C:\Users\Büþra1\Desktop\buton_dene\buton_dene.c (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      buton_dene.err
+    Ext Symbols: buton_dene.esym
+    INHX8:       buton_dene.hex
+    Symbols:     buton_dene.sym
+    List:        buton_dene.lst
+    Debug/COFF:  buton_dene.cof
+    Project:     buton_dene.PJT
+    Call Tree:   buton_dene.tre
+    Statistics:  buton_dene.sta

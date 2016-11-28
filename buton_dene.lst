@@ -1,0 +1,164 @@
+CCS PCM C Compiler, Version 4.068, 9702               27-Haz-14 16:37
+
+               Filename: C:\Users\Büþra1\Desktop\buton_dene\buton_dene.lst
+
+               ROM used: 227 words (11%)
+                         Largest free fragment is 1821
+               RAM used: 7 (3%) at main() level
+                         16 (7%) worst case
+               Stack:    2 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0AF
+0003:  NOP
+.................... #include <16f628A.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #fuses INTRC 
+.................... #use delay(clock=4M) 
+009A:  MOVLW  21
+009B:  MOVWF  04
+009C:  BCF    03.7
+009D:  MOVF   00,W
+009E:  BTFSC  03.2
+009F:  GOTO   0AE
+00A0:  MOVLW  01
+00A1:  MOVWF  78
+00A2:  CLRF   77
+00A3:  DECFSZ 77,F
+00A4:  GOTO   0A3
+00A5:  DECFSZ 78,F
+00A6:  GOTO   0A2
+00A7:  MOVLW  4A
+00A8:  MOVWF  77
+00A9:  DECFSZ 77,F
+00AA:  GOTO   0A9
+00AB:  GOTO   0AC
+00AC:  DECFSZ 00,F
+00AD:  GOTO   0A0
+00AE:  GOTO   0E0 (RETURN)
+.................... #use rs232 (baud=2400, xmit=pin_b2, rcv=pin_b1, parity=N) 
+....................  
+.................... #define btn1 pin_b4 
+.................... #define btn2 pin_b5 
+.................... #define btn4 pin_b6 
+.................... #define btn8 pin_b7 
+....................  
+....................  
+....................  
+.................... char btn_oku(){ 
+....................              unsigned char tus=0; 
+*
+0004:  CLRF   21
+....................               
+....................              if(input(btn1)){ tus |=0x01;  } 
+0005:  BSF    03.5
+0006:  BSF    06.4
+0007:  BCF    03.5
+0008:  BTFSC  06.4
+0009:  BSF    21.0
+....................              if(input(btn2)){ tus |=0x02; } 
+000A:  BSF    03.5
+000B:  BSF    06.5
+000C:  BCF    03.5
+000D:  BTFSC  06.5
+000E:  BSF    21.1
+....................              if(input(btn4)){ tus |=0x04; } 
+000F:  BSF    03.5
+0010:  BSF    06.6
+0011:  BCF    03.5
+0012:  BTFSC  06.6
+0013:  BSF    21.2
+....................              if(input(btn8)){ tus |=0x08; } 
+0014:  BSF    03.5
+0015:  BSF    06.7
+0016:  BCF    03.5
+0017:  BTFSC  06.7
+0018:  BSF    21.3
+....................  
+.................... return tus; 
+0019:  MOVF   21,W
+001A:  MOVWF  78
+....................  
+.................... } 
+001B:  RETLW  00
+....................  
+.................... void main() 
+.................... { 
+*
+00AF:  CLRF   04
+00B0:  BCF    03.7
+00B1:  MOVLW  1F
+00B2:  ANDWF  03,F
+00B3:  BSF    03.5
+00B4:  BSF    0E.3
+00B5:  MOVLW  19
+00B6:  MOVWF  19
+00B7:  MOVLW  A2
+00B8:  MOVWF  18
+00B9:  MOVLW  90
+00BA:  BCF    03.5
+00BB:  MOVWF  18
+00BC:  MOVLW  07
+00BD:  MOVWF  1F
+....................     set_tris_b(0xF0); 
+00BE:  MOVLW  F0
+00BF:  TRIS   6
+....................     
+....................      
+....................     while(1){ 
+....................      
+....................          
+....................         while(btn_oku()!=0) { 
+00C0:  CALL   004
+00C1:  MOVF   78,F
+00C2:  BTFSC  03.2
+00C3:  GOTO   0E1
+....................          
+....................                 printf ("%d\n\r", putc(btn_oku())); 
+00C4:  CALL   004
+00C5:  MOVF   78,W
+00C6:  MOVWF  21
+00C7:  MOVF   78,W
+00C8:  BTFSS  0C.4
+00C9:  GOTO   0C8
+00CA:  MOVWF  19
+00CB:  MOVWF  22
+00CC:  MOVLW  1F
+00CD:  MOVWF  23
+00CE:  GOTO   031
+00CF:  MOVLW  0A
+00D0:  BTFSS  0C.4
+00D1:  GOTO   0D0
+00D2:  MOVWF  19
+00D3:  MOVLW  0D
+00D4:  BTFSS  0C.4
+00D5:  GOTO   0D4
+00D6:  MOVWF  19
+....................          
+....................                 output_A(btn_oku()); 
+00D7:  CALL   004
+00D8:  BSF    03.5
+00D9:  CLRF   05
+00DA:  BCF    03.5
+00DB:  MOVF   78,W
+00DC:  MOVWF  05
+....................          
+....................                 delay_ms(250); 
+00DD:  MOVLW  FA
+00DE:  MOVWF  21
+00DF:  GOTO   09A
+....................         } 
+00E0:  GOTO   0C0
+....................     } 
+00E1:  GOTO   0C0
+....................  
+.................... } 
+00E2:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   NOWDT PUT NOPROTECT BROWNOUT MCLR NOLVP INTRC NOCPD

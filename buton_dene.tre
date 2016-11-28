@@ -1,0 +1,10 @@
+ÀÄbuton_dene
+   ÀÄMAIN  0/52  Ram=1
+      ÃÄ??0??
+      ÃÄbtn_oku  0/24  Ram=1
+      ÃÄbtn_oku  0/24  Ram=1
+      ÃÄ@PRINTF_D_2400_50_49  0/105  Ram=6
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÀÄ@DIV88  0/21  Ram=3
+      ÃÄbtn_oku  0/24  Ram=1
+      ÀÄ@delay_ms1  0/21  Ram=1
